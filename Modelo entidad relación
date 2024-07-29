@@ -1,0 +1,37 @@
+User
+-----
+id: Long (PK)
+email: String
+password: String
+role: String
+
+Parqueadero
+-----------
+id: Long (PK)
+nombre: String
+direccion: String
+capacidad: int
+costoPorHora: double
+socio_id: Long (FK) references User(id)
+
+Vehiculo
+--------
+id: Long (PK)
+placa: String
+fechaIngreso: String
+fechaSalida: String
+parqueadero_id: Long (FK) references Parqueadero(id)
+
+
+Relación Entre Entidades
+
+User - Parqueadero:
+
+Relación: Uno a Muchos (One-to-Many)
+Un usuario puede tener múltiples parqueaderos asociados (socio).
+Clave foránea: socio_id en Parqueadero referencia id en User.
+Parqueadero - Vehiculo:
+
+Relación: Uno a Muchos (One-to-Many)
+Un parqueadero puede tener múltiples vehículos asociados.
+Clave foránea: parqueadero_id en Vehiculo referencia id en Parqueadero.
